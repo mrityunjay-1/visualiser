@@ -42,6 +42,7 @@ function App() {
     try {
 
       const res = await axios({
+        method: "POST",
         url: apiUrl,
         data: {
           type: "allFields",
