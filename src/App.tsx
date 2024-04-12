@@ -7,6 +7,8 @@ const { Text, Title } = Typography;
 
 function App() {
 
+  const [callId, setCallId] = useState(location?.search?.replace("?", "").split("=")[1]);
+
   const [fields, setFields]: any = useState({ firstname: "", lastname: "", email: "", feedback: "", rating: "" });
 
   const [showAddFieldModal, setShowAddFieldModal] = useState(false);
@@ -27,7 +29,8 @@ function App() {
         url: apiUrl,
         data: {
           type: "fieldwise",
-          fieldName
+          fieldName,
+          callId
         }
       });
 
@@ -46,7 +49,8 @@ function App() {
         url: apiUrl,
         data: {
           type: "allFields",
-          fields
+          fields,
+          callId
         }
       });
 
@@ -126,6 +130,23 @@ function App() {
         <Flex justify="space-between">
           <Title level={2}> Fields </Title>
           <Button style={{ width: "20%" }} type='primary' onClick={() => setShowAddFieldModal(true)}>Add Field + </Button>
+        </Flex>
+
+
+        <Flex vertical style={{}}>
+
+          <Flex vertical style={{ marginBottom: 10 }}>
+            <Text>Call Id</Text>
+            <Input
+              value={callId}
+              placeholder='Call Id'
+              onChange={(e) => setCallId(e.target.value)}
+            />
+
+            <br />
+
+          </Flex>
+
         </Flex>
 
         <Flex style={{}} vertical>
