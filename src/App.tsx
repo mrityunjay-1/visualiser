@@ -192,7 +192,10 @@ function App() {
 
         <br />
 
-        <Button onClick={() => sendAllData()} style={{ background: "orange" }}>Submit</Button>
+        <Button onClick={() => {
+          sendAllData();
+          setLastFocusField("");
+        }} style={{ background: "orange" }}>Submit</Button>
 
       </Flex>
 
