@@ -192,12 +192,21 @@ function App() {
 
         <br />
 
-        <Button onClick={() => {
-          sendAllData();
-          setLastFocusField("");
-        }} style={{ background: "orange" }}>Submit</Button>
+        <Flex justify='flex-end' gap={20}>
 
-      </Flex>
+          <Button onClick={() => {
+            setFields({ firstname: "", lastname: "", email: "", feedback: "", rating: "" });
+            setCallId("");
+          }} style={{}}>Clear</Button>
+
+          <Button onClick={() => {
+            sendAllData();
+            setLastFocusField("");
+          }} style={{ background: "orange" }}>Submit</Button>
+
+        </Flex>
+
+      </Flex >
 
     </>
   )
