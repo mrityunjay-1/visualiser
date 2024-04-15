@@ -64,11 +64,16 @@ function App() {
   }
 
   useEffect(() => {
+    try {
+      const au = localStorage && localStorage.getItem("au");
+      console.log("apiurl : ", au);
+      if (au) {
+        setAPIUrl(au);
+      }
 
-    const apiurl = localStorage && localStorage.getItem("apiurl");
+    } catch (error) {
 
-    if (apiUrl) setAPIUrl(!apiurl ? "" : apiUrl);
-
+    }
   }, []);
 
   return (
@@ -104,7 +109,7 @@ function App() {
           <Title level={2}>API Details</Title>
           <Button onClick={() => {
             if (!apiUrl) notification.error({ message: "API yrl to dalo" });
-            localStorage && localStorage.setItem("apiurl", apiUrl);
+            localStorage && localStorage.setItem("au", apiUrl);
           }} style={{ width: "20%" }} type='primary'>Save</Button>
         </Flex>
 
@@ -113,10 +118,11 @@ function App() {
           <Flex vertical style={{ marginBottom: 10 }}>
             <Text>API URL</Text>
             <Input
-
               value={apiUrl}
               placeholder='API URL'
-              onChange={(e) => setAPIUrl(e.target.value)}
+              onChange={(e) => {
+                setAPIUrl(e.target.value)
+              }}
             />
 
             <br />
@@ -161,7 +167,7 @@ function App() {
                     <Input
                       value={fields[field]}
                       placeholder={field}
-                      onMouseEnter={() => {
+                      onFocus={() => {
                         callAPIOnMouseEnter(field);
                       }}
                       onChange={(e) => {
