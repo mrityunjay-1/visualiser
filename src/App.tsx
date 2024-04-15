@@ -17,6 +17,8 @@ function App() {
 
   const [apiUrl, setAPIUrl]: any = useState("");
 
+  const [lastFocusField, setLastFocusField] = useState("");
+
   const callAPIOnMouseEnter = async (fieldName: string) => {
     try {
 
@@ -167,8 +169,11 @@ function App() {
                     <Input
                       value={fields[field]}
                       placeholder={field}
-                      onClick={() => {
-                        callAPIOnMouseEnter(field);
+                      onFocus={() => {
+                        if (lastFocusField !== field) {
+                          callAPIOnMouseEnter(field);
+                          setLastFocusField(field);
+                        }
                       }}
                       onChange={(e) => {
                         setFields((prev: any) => {
