@@ -167,7 +167,7 @@ function App() {
                     <Input
                       value={fields[field]}
                       placeholder={field}
-                      onFocus={() => {
+                      onClick={() => {
                         callAPIOnMouseEnter(field);
                       }}
                       onChange={(e) => {
