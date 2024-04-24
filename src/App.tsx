@@ -23,6 +23,7 @@ function App() {
   const [q1, setQ1] = useState("");
   const [q2, setQ2] = useState("");
   const [q3, setQ3] = useState("");
+  const [q3Amount, setQ3Amount] = useState();
   const [q4, setQ4] = useState("");
   const [q5, setQ5] = useState("");
   const [q6, setQ6] = useState("");
@@ -143,7 +144,33 @@ function App() {
               <Radio value={"notSure"}>Not Sure</Radio>
             </Radio.Group>
 
+            {
+              q3 === "yes" ?
+                <>
+                  <br />
+
+                  <Flex vertical>
+                    <Text style={{ fontWeight: 500 }}>Please confirm how much amount you paid ?</Text>
+
+                    <Flex align='center'>
+                      <Text style={{ flex: 0.1 }}>Amount</Text>
+                      <Input
+                        value={q3Amount}
+                        onChange={(e: any) => setQ3Amount(e.target.value)}
+                        style={{ flex: 0.2 }}
+                        placeholder='0'
+                      />
+                    </Flex>
+
+                  </Flex>
+
+                </>
+                :
+                null
+            }
+
           </Flex>
+
 
         </Flex>
 
@@ -165,44 +192,53 @@ function App() {
 
         </Flex>
 
-        {/* Question 5 */}
+        {
+          q3 === "yes" && q4 === "yes" ?
+            null
+            :
+            <>
+
+              {/* Question 5 */}
+              <Flex>
+
+                <Text style={{ flex: 0.06 }}>5</Text>
+
+                <Flex vertical style={{ flex: 0.94 }}>
+
+                  <Title level={5}>Did you get Bill / Invoice of payment ?</Title>
+
+                  <Radio.Group onChange={(e: any) => { setQ5(e.target.value) }} value={q5}>
+                    <Radio value={"yes"}>Yes</Radio>
+                    <Radio value={"no"}>No</Radio>
+                  </Radio.Group>
+
+                </Flex>
+
+              </Flex>
+
+              {/* Question 6 */}
+              <Flex>
+
+                <Text style={{ flex: 0.06 }}>6</Text>
+
+                <Flex vertical style={{ flex: 0.94 }}>
+
+                  <Title level={5}>Please Confirm the type of Bill / Invoice Engineer provided to you</Title>
+
+                  <Radio.Group onChange={(e: any) => { setQ6(e.target.value) }} value={q6}>
+                    <Radio value={"digital"}>Digital</Radio>
+                    <Radio value={"handWritten"}>Hand Written</Radio>
+                  </Radio.Group>
+
+                </Flex>
+
+              </Flex>
+
+            </>
+        }
+
         <Flex>
-
-          <Text style={{ flex: 0.06 }}>5</Text>
-
-          <Flex vertical style={{ flex: 0.94 }}>
-
-            <Title level={5}>Did you get Bill / Invoice of payment ?</Title>
-
-            <Radio.Group onChange={(e: any) => { setQ5(e.target.value) }} value={q5}>
-              <Radio value={"yes"}>Yes</Radio>
-              <Radio value={"no"}>No</Radio>
-            </Radio.Group>
-
-          </Flex>
-
-        </Flex>
-
-        {/* Question 6 */}
-        <Flex>
-
-          <Text style={{ flex: 0.06 }}>6</Text>
-
-          <Flex vertical style={{ flex: 0.94 }}>
-
-            <Title level={5}>Please Confirm the type of Bill / Invoice Engineer provided to you</Title>
-
-            <Radio.Group onChange={(e: any) => { setQ6(e.target.value) }} value={q6}>
-              <Radio value={"digital"}>Digital</Radio>
-              <Radio value={"handWritten"}>Hand Written</Radio>
-            </Radio.Group>
-
-          </Flex>
-
-        </Flex>
-
-        <Flex>
-          <Text style={{ flex: 0.06 }}>7</Text>
+          <Text style={{ flex: 0.06 }}> {q3 === "yes" && q4 === "yes" ? "5" : "7"}</Text>
           <Flex vertical style={{ flex: 0.94 }}>
             <Title level={5}>Remarks</Title>
             <Input.TextArea

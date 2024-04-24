@@ -12,7 +12,13 @@
   overflow: auto;
 }
 
-
 .form-container>div {
   margin-bottom: 2rem;
+}
+
+@media(max-width: 76rem) {
+  .form-container {
+    left: 3%;
+    right: 3%;
+  }
 }
