@@ -12,6 +12,21 @@
   overflow: auto;
 }
 
+.form-container::-webkit-scrollbar {
+  /* background-color: red; */
+  width: 0.9rem;
+}
+
+.form-container::-webkit-scrollbar-thumb {
+  background-color: grey;
+  border-radius: 1100rem;
+  /* width: 0.9rem; */
+}
+
+/* .form-container::-webkit-scrollbar-track {
+  background-color: red;
+} */
+
 .form-container>div {
   margin-bottom: 2rem;
 }

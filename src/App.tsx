@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import "./App.css";
-import { Button, Flex, Input, Radio, Typography } from 'antd'
+import { Button, Flex, Input, Radio, Typography, message } from 'antd'
 // import axios from 'axios';
 
 const { Text, Title } = Typography;
@@ -156,7 +156,13 @@ function App() {
                       <Text style={{ flex: 0.1 }}>Amount</Text>
                       <Input
                         value={q3Amount}
-                        onChange={(e: any) => setQ3Amount(e.target.value)}
+                        onChange={(e: any) => {
+                          let val = e.target.value;
+
+                          if (isNaN(+(val))) return message.warning("Please enter valid amount.");
+
+                          setQ3Amount(val)
+                        }}
                         style={{ flex: 0.2 }}
                         placeholder='0'
                       />
@@ -193,9 +199,7 @@ function App() {
         </Flex>
 
         {
-          q3 === "yes" && q4 === "yes" ?
-            null
-            :
+          q3 === "yes" || q4 === "yes" ?
             <>
 
               {/* Question 5 */}
@@ -235,10 +239,12 @@ function App() {
               </Flex>
 
             </>
+            :
+            null
         }
 
         <Flex>
-          <Text style={{ flex: 0.06 }}> {q3 === "yes" && q4 === "yes" ? "5" : "7"}</Text>
+          <Text style={{ flex: 0.06 }}> {q3 === "yes" || q4 === "yes" ? "7" : "5"}</Text>
           <Flex vertical style={{ flex: 0.94 }}>
             <Title level={5}>Remarks</Title>
             <Input.TextArea
