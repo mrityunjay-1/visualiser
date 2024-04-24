@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import "./App.css";
-import { Button, Flex, Input, Modal, Radio, Typography, notification } from 'antd'
-import axios from 'axios';
+import { Button, Flex, Input, Radio, Typography } from 'antd'
+// import axios from 'axios';
 
 const { Text, Title } = Typography;
 
@@ -10,15 +10,15 @@ function App() {
   const paramsRaw = new URLSearchParams(window.location.search);
   const params = Object.fromEntries(paramsRaw.entries());
 
-  const [fields, setFields]: any = useState({ firstname: "", lastname: "", email: "", feedback: "", rating: "" });
+  // const [fields, setFields]: any = useState({ firstname: "", lastname: "", email: "", feedback: "", rating: "" });
 
-  const [showAddFieldModal, setShowAddFieldModal] = useState(false);
+  // const [showAddFieldModal, setShowAddFieldModal] = useState(false);
 
-  const [newFieldName, setNewFieldName]: any = useState("");
+  // const [newFieldName, setNewFieldName]: any = useState("");
 
-  const [apiUrl, setAPIUrl]: any = useState("");
+  // const [apiUrl, setAPIUrl]: any = useState("");
 
-  const [lastFocusField, setLastFocusField] = useState("");
+  // const [lastFocusField, setLastFocusField] = useState("");
 
   const [q1, setQ1] = useState("");
   const [q2, setQ2] = useState("");
@@ -28,31 +28,31 @@ function App() {
   const [q5, setQ5] = useState("");
   const [q6, setQ6] = useState("");
 
-  const callAPIOnMouseEnter = async (fieldName: string) => {
-    try {
+  // const callAPIOnMouseEnter = async (fieldName: string) => {
+  //   try {
 
-    } catch (error) {
+  //   } catch (error) {
 
-    }
-  }
+  //   }
+  // }
 
-  const sendAllData = async () => {
-    try {
+  // const sendAllData = async () => {
+  //   try {
 
 
 
-    } catch (error) {
+  //   } catch (error) {
 
-    }
-  }
+  //   }
+  // }
 
   useEffect(() => {
     try {
-      const au = localStorage && localStorage.getItem("au");
-      console.log("apiurl : ", au);
-      if (au) {
-        setAPIUrl(au);
-      }
+      // const au = localStorage && localStorage.getItem("au");
+      // console.log("apiurl : ", au);
+      // if (au) {
+      //   setAPIUrl(au);
+      // }
 
     } catch (error) {
 
@@ -62,7 +62,7 @@ function App() {
   return (
     <>
 
-      <Modal open={showAddFieldModal}
+      {/* <Modal open={showAddFieldModal}
         onCancel={() => setShowAddFieldModal(false)}
         onOk={() => {
           if (!newFieldName) {
@@ -83,7 +83,7 @@ function App() {
           />
         </Flex>
 
-      </Modal>
+      </Modal> */}
 
       <Flex vertical className='form-container'>
 
@@ -252,8 +252,8 @@ function App() {
         <Flex justify='flex-end' gap={20}>
 
           <Button size="large" onClick={() => {
-            sendAllData();
-            setLastFocusField("");
+            // sendAllData();
+            // setLastFocusField("");
           }} style={{ padding: "0 3rem", background: "rgba(151, 29, 55, 1)", color: "white" }}>Submit</Button>
 
         </Flex>
